@@ -1,0 +1,10 @@
+sudo: requiered
+services:
+  - docker
+
+before_install: 
+  - docker build -t crozeg/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run crozeg/docker-react npm run test -- --coverage
+  //- docker run -e CI=true crozeg/docker-react npm run test
